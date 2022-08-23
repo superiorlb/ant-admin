@@ -1,0 +1,26 @@
+.main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .content {
+    width: 300px;
+    h1{
+      color: #1489EE;
+      text-align: center;
+    }
+    p {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      .ant-input {
+        flex: 1;
+      }
+      .ant-btn {
+        flex: 1;
+        border-radius: 15px;
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.loading{
+    width: 100vw;
+    height: 100vh;
+    font-size: 20px;
+    color: #1489FF;
+    text-align: center;
+    line-height: 100vh;
+    font-weight: 500;
+}
