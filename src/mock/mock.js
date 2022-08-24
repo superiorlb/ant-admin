@@ -1,5 +1,5 @@
 import { Random, setup, mock } from "mockjs";
-const Base_Url = 'http://localhost:3000'
+const Base_Url = process.env.REACT_APP_BASE_URL
 setup({
     timeout: 1000
 })
