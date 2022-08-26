@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { UserOutlined, EyeOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Button, Input } from 'antd'
 import './login.scss'
 import Message from '../../utils/message'
@@ -52,9 +52,15 @@ export default function Login() {
         <div className='main'>
             <div className='content'>
                 <h1>Ant Admin</h1>
-                <p><Input value={user.name} onChange={handleName} prefix={<UserOutlined />} allowClear /> </p>
-                <p><Input type='password' value={user.password} prefix={<EyeOutlined />} onChange={handlePassword} allowClear /></p>
-                <p> <Button onClick={handleLogin} type='primary'>登录</Button> </p>
+                <p>
+                    <Input value={user.name} onChange={handleName} prefix={<UserOutlined />} allowClear />
+                </p>
+                <p>
+                    <Input.Password onChange={handlePassword} value={user.password} prefix={<LockOutlined />} allowClear />
+                </p>
+                <p>
+                    <Button onClick={handleLogin} type='primary'>登录</Button>
+                </p>
             </div>
         </div>
     )
