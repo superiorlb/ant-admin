@@ -6,7 +6,6 @@ const service = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
     timeout: 10 * 1000
 })
-console.log(process.env.REACT_APP_BASE_URL);
 service.interceptors.request.use((config) => {
     config.headers['token'] = '123456789'
     if (config.data === undefined) {
