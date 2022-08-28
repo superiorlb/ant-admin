@@ -1,14 +1,21 @@
-import { useEffect } from "react";
-import "nprogress/nprogress.css";
-import NProgress from 'nprogress'
-import './loading.css'
-export default function Loading() {
-    NProgress.start()
-    useEffect(() => {
-        NProgress.done()
-    })
-    return (
-        <div className='loading'>loading...</div>
-    )
+import React from 'react'
+import { Spin } from 'antd'
+import { LoadingOutlined } from '@ant-design/icons';
+const Icon = (
+  <LoadingOutlined
+    style={{
+      fontSize: 24,
+    }}
+    spin
+  />
+)
+export default function Loading({ children }) {
+  return (
+    <Spin indicator={<Icon />}>
+      {
+        children
+      }
+    </Spin>
+  )
 }
-NProgress.configure({ easing: 'ease', speed: 500 });
+

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.scss';
 import routes from './router';
-import Loading from './components/loading/loading';
+import GlobalLoading from './components/loading/globalLoading';
 import Layout from './views/layout/layout';
 import NotFound from './views/404/404';
 import Login from './views/login/login';
@@ -17,7 +17,7 @@ const RoutesRender = (routes) => {
 }
 function App() {
   return (
-    <React.Suspense fallback={<Loading />}>
+    <React.Suspense fallback={<GlobalLoading />}>
       <Router>
         <Routes>
           <Route path='/' element={<Layout />}>
