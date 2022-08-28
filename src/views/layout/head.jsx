@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Layout, Breadcrumb, Avatar, Badge, Descriptions, Menu, Dropdown } from 'antd'
+import { Layout, Breadcrumb, Avatar, Badge, Descriptions, Menu, Dropdown,Tag  } from 'antd'
 import {
   FullscreenOutlined,
   MessageOutlined,
@@ -15,7 +15,7 @@ import { removeToken } from '../../utils/token'
 import Message from '../../utils/message'
 const { Header } = Layout
 const UserInfo = () => <Descriptions title="User Info">
-  <Descriptions.Item label="UserName">Zhou Maomao</Descriptions.Item>
+  <Descriptions.Item label="UserName"> <Tag color="processing"> Zhou Maomao</Tag></Descriptions.Item>
   <Descriptions.Item label="Telephone">1810000000</Descriptions.Item>
   <Descriptions.Item label="Live">Hangzhou, Zhejiang</Descriptions.Item>
   <Descriptions.Item label="Remark">empty</Descriptions.Item>

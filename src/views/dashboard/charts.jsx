@@ -519,7 +519,7 @@ export default function Charts() {
                         </List.Item>
                     )}
                 />
-                <Liquid {...LiquidConfig} style={{ width: 200, height: 200 }} />
+                <Liquid {...LiquidConfig} style={{ width: 200 }} />
             </Card>
             <div className='charts'>
                 <DualAxes {...config} />
