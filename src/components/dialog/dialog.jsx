@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types'
 import { Modal } from "antd"
-// import Message from '../../utils/message'
+import Message from '../../utils/message'
 const handleDefaultCancel = () => {
-    // Message('warning', '已取消')
+    Message('warning', '已取消')
 }
-export default function Dialog(props) {
-    const { title, children, content, width, visible, setVisible, sure, cancel } = props
+export default function Dialog({ title, children, content, width, visible, setVisible, sure, cancel }) {
     const handleOK = () => {
         sure()
         setVisible(false)
@@ -24,7 +23,7 @@ export default function Dialog(props) {
 }
 
 Dialog.propTypes = {
-    title: PropTypes.string,
+    title: PropTypes.any,
     content: PropTypes.any,
     width: PropTypes.string,
     cancel: PropTypes.func,

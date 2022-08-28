@@ -1,33 +1,31 @@
 import { message, Popconfirm, Button } from 'antd';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import React from 'react';
-
-const confirm = (e) => {
-    console.log(e);
-    message.success('Click on Yes');
+import Message from '../../utils/message';
+const cancel = () => {
+    Message('warning', "已取消")
 };
-
-const cancel = (e) => {
-    console.log(e);
-    message.error('Click on No');
-};
-
-export default function DeleteButton(props) {
-    const { children, type, text } = props
+export default function DeleteButton({ children, type, text, sure }) {
+    const confirm = () => {
+        sure()
+        Message('success', '删除成功')
+    };
     return (
         <Popconfirm
-            title="Are you sure to delete this task?"
+            title="确认删除吗?"
             onConfirm={confirm}
             onCancel={cancel}
-            okText="Yes"
-            cancelText="No"
+            okText="是"
+            cancelText="否"
         >
             <Button danger type={type}>{children ? children : text}</Button>
         </Popconfirm>
     )
 }
+DeleteButton.propTypes = {
+    sure: PropTypes.func
+}
 DeleteButton.defaultProps = {
     type: 'text',
     text: 'Delete'
-
 }

@@ -4,6 +4,7 @@ import { SmileOutlined } from '@ant-design/icons';
 import { DualAxes, Liquid, Mix } from '@ant-design/plots'
 import { DataView } from '@antv/data-set';
 import { getMessageList } from '../../api';
+import Loading from '../../components/loading/Loading';
 const data = [
     {
         time: '2020-08-20',
@@ -492,13 +493,16 @@ const mixConfig = {
 };
 export default function Charts() {
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(false)
     const getList = async () => {
+        setLoading(true)
         const { data } = await getMessageList()
+        setLoading(false)
         setData(data)
     }
     useEffect(() => {
         getList()
-    },[])
+    }, [])
     return (
         <>
             <Card className='top'>
@@ -506,20 +510,22 @@ export default function Charts() {
                     icon={<SmileOutlined />}
                     title="Good evening, Welcome back, Mr. Liu!"
                 />
-                <List
-                    itemLayout="horizontal"
-                    dataSource={data}
-                    renderItem={(item) => (
-                        <List.Item>
-                            <List.Item.Meta
-                                avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                                title={item.name}
-                                description={item.content}
-                            />
-                        </List.Item>
-                    )}
-                />
-                <Liquid {...LiquidConfig} style={{ width: 200, height: 200 }} />
+                <Loading loading={loading}>
+                    <List
+                        itemLayout="horizontal"
+                        dataSource={data}
+                        renderItem={(item) => (
+                            <List.Item>
+                                <List.Item.Meta
+                                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                                    title={item.name}
+                                    description={item.content}
+                                />
+                            </List.Item>
+                        )}
+                    />
+                </Loading>
+                <Liquid {...LiquidConfig} style={{ width: 200 }} />
             </Card>
             <div className='charts'>
                 <DualAxes {...config} />
