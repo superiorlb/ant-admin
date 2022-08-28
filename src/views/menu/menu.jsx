@@ -5,6 +5,7 @@ import TableList from '../../components/table/tableList';
 import SearchHead from '../menu/searchHead';
 import { getMenuList } from '../../api/index'
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons'
+import Loading from '../../components/loading/Loading';
 const columns = [
   {
     title: '菜单名字',
@@ -45,9 +46,12 @@ const columns = [
 ];
 export default function Menu() {
   const [visible, setVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
   const getList = async () => {
+    setLoading(true)
     const { data } = await getMenuList()
+    setLoading(false)
     data.forEach(item => {
       item.key = item.id
       item?.children && item.children.forEach(i => i.key = i.id)
@@ -62,7 +66,7 @@ export default function Menu() {
   }
   useEffect(() => {
     getList()
-  })
+  }, [])
   const tableConfig = {
     data,
     columns,
@@ -79,7 +83,9 @@ export default function Menu() {
     <div>
       <SearchHead />
       <CardAdd submit={handleAdd} />
-      <TableList {...tableConfig} />
+      <Loading loading={loading}>
+        <TableList {...tableConfig} />
+      </Loading>
       <Dialog {...dialogConfig} />
     </div>
   )

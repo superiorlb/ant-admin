@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
-// import { Space, Tag } from 'antd';
 import SearchHead from './searchHead';
 import TableList from '../../components/table/tableList'
 import CardAdd from '../../components/cardAdd';
 import Dialog from '../../components/dialog/dialog';
 import Message from '../../utils/message';
 import { getAdminList } from '../../api/index'
+import Loading from '../../components/loading/Loading'
+import { Tag } from 'antd';
 const columns = [
     {
         title: 'ID',
@@ -16,7 +17,8 @@ const columns = [
     {
         title: 'Name',
         dataIndex: 'name',
-        align: 'center'
+        align: 'center',
+        render: (name) => <Tag color='processing'>{name}</Tag>
 
     },
     {
@@ -46,6 +48,7 @@ const columns = [
 ];
 export default function Admin() {
     const [visible, setVisible] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [data, setData] = useState([])
     const handleAdd = (val) => {
         setVisible(true)
@@ -54,7 +57,9 @@ export default function Admin() {
         Message('success', '提交成功')
     }
     const getList = async () => {
+        setLoading(true)
         const { data } = await getAdminList()
+        setLoading(false)
         data.forEach(item => {
             item.key = item.id
         })
@@ -62,12 +67,14 @@ export default function Admin() {
     }
     useEffect(() => {
         getList()
-    })
+    }, [])
     return (
         <div>
             <SearchHead />
             <CardAdd submit={handleAdd} />
-            <TableList data={data} columns={columns} border total={data.length} />
+            <Loading loading={loading}>
+                <TableList data={data} columns={columns} border total={data.length} />
+            </Loading>
             <Dialog title="添加管理员" visible={visible} setVisible={setVisible} sure={handleOk} />
 
         </div>

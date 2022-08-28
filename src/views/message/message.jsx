@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Avatar, List, Card, Button, Spin, Input, Space } from 'antd';
+import { Avatar, List, Card, Button, Input, Space } from 'antd';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
 import './message.scss'
 import DeleteButton from '../../components/button/deleteButton';
 import { getMessageList } from '../../api';
 import Dialog from '../../components/dialog/dialog'
+import Loading from '../../components/loading/Loading';
 const { TextArea } = Input
 const title = <span><MessageOutlined />  回复</span>
 const IconText = ({ icon, text = '暂无回复' }) => (
@@ -42,7 +43,7 @@ export default function Message() {
     }, [])
     return (
         <>
-            <Spin tip="Loading..." spinning={loading}>
+            <Loading loading={loading}>
                 <List
                     itemLayout="vertical"
                     dataSource={data}
@@ -69,7 +70,7 @@ export default function Message() {
                         </Card>
                     )}
                 />
-            </Spin>
+            </Loading>
             <Dialog title={title} visible={visible} setVisible={setVisible} sure={handleOK} content={content} />
         </>
     )
