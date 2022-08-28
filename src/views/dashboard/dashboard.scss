@@ -21,10 +21,7 @@
         width: 400px;
         height: 250px;
         cursor: pointer;
-        overflow: hidden;
-        &:hover {
-          overflow: auto;
-        }
+        overflow: auto;
       }
     }
   }
