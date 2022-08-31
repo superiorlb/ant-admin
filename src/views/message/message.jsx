@@ -5,7 +5,7 @@ import './message.scss'
 import DeleteButton from '../../components/button/deleteButton';
 import { getMessageList } from '../../api';
 import Dialog from '../../components/dialog/dialog'
-import Loading from '../../components/loading/Loading';
+import Loading from '../../components/loading/loading';
 const { TextArea } = Input
 const title = <span><MessageOutlined />  回复</span>
 const IconText = ({ icon, text = '暂无回复' }) => (

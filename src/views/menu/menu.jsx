@@ -5,7 +5,7 @@ import TableList from '../../components/table/tableList';
 import SearchHead from '../menu/searchHead';
 import { getMenuList } from '../../api/index'
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons'
-import Loading from '../../components/loading/Loading';
+import Loading from '../../components/loading/loading';
 const columns = [
   {
     title: '菜单名字',

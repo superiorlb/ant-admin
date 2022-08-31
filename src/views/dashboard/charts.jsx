@@ -4,7 +4,7 @@ import { SmileOutlined } from '@ant-design/icons';
 import { DualAxes, Liquid, Mix } from '@ant-design/plots'
 import { DataView } from '@antv/data-set';
 import { getMessageList } from '../../api';
-import Loading from '../../components/loading/Loading';
+import Loading from '../../components/loading/loading';
 const data = [
     {
         time: '2020-08-20',

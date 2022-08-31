@@ -5,7 +5,7 @@ import CardAdd from '../../components/cardAdd';
 import Dialog from '../../components/dialog/dialog';
 import Message from '../../utils/message';
 import { getAdminList } from '../../api/index'
-import Loading from '../../components/loading/Loading'
+import Loading from '../../components/loading/loading'
 import { Tag } from 'antd';
 const columns = [
     {
