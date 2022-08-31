@@ -17,7 +17,7 @@ const IconText = ({ icon, text = '暂无回复' }) => (
 let index = 0
 export default function Message() {
     const [value, setValue] = useState('')
-    const content = <TextArea value={value} onChange={(e) => setValue(e.target.value)} placeholder='请输入回复内容' />
+    const content = <TextArea rows={4} value={value} onChange={(e) => setValue(e.target.value)} placeholder='请输入回复内容' />
     const [visible, setVisible] = useState(false)
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
@@ -71,7 +71,7 @@ export default function Message() {
                     )}
                 />
             </Loading>
-            <Dialog title={title} visible={visible} setVisible={setVisible} sure={handleOK} content={content} />
+            <Dialog width='40%' title={title} visible={visible} setVisible={setVisible} sure={handleOK} content={content} />
         </>
     )
 }
