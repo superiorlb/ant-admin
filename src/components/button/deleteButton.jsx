@@ -1,4 +1,4 @@
-import { message, Popconfirm, Button } from 'antd';
+import { Popconfirm, Button } from 'antd';
 import PropTypes from 'prop-types'
 import React from 'react';
 import Message from '../../utils/message';
