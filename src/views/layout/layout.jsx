@@ -9,9 +9,12 @@ import { getToken } from "../../utils/token";
 const { Content } = Layout;
 export default function Layouts() {
   const navigateTo = useNavigateTo();
-  useEffect(() => {
+  const handleLogin = () => {
     const token = getToken();
     !token && navigateTo("login");
+  }
+  useEffect(() => {
+    handleLogin()
   }, []);
   return (
     <Layout>
