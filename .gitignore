@@ -25,3 +25,4 @@ yarn-error.log*
 
 # Package manager
 yarn.lock
+pnpm-lock.yaml
