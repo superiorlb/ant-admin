@@ -6,11 +6,14 @@ import Message from '../../utils/message'
 import useNavigateTo from '../../hook/useNavigateTo'
 import { login } from '../../api/index'
 import { setToken } from '../../utils/token'
+import { useDispatch } from 'react-redux';
+import { handleSetToken } from '../../store/login';
 const userData = {
     name: null,
     password: null
 }
 export default function Login() {
+    const dispatch = useDispatch()
     const [user, setUser] = useState(userData)
     const navigateTo = useNavigateTo()
     const handleName = (e) => {
@@ -45,6 +48,7 @@ export default function Login() {
         const res = await login()
         const { token } = res.data
         setToken(token)
+        dispatch(handleSetToken(token))
         navigateTo('/')
         Message('success', '登录成功')
     }
